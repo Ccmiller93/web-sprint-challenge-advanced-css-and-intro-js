@@ -210,8 +210,8 @@ const artists = [
 (1) Name of the first artist (0th index) in the array
 (2) Bio of the third artist (2nd index) in the array */
 
-console.log(artists[0]) //amedeo
-console.log(artists[2]) //dieago
+console.log(artists[0].name) //amedeo
+console.log(artists[2].bio) //dieago
 
 ///////////////////////////////// Task 1 (done)//////////////////////////////////////////////////////
 
@@ -249,9 +249,9 @@ console.log(getArtistByIndex(artists, 9))
 
 /* Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
-let arr20 = []
 
 function get20s(arr) {
+  let arr20 = []
   for (let i = 0; i < arr.length; i++) {
     let artist20 = arr[i].years.split(" - ");
     arr[i].birth = artist20[0];
@@ -260,9 +260,10 @@ function get20s(arr) {
       arr20.push(arr[i])
     }
   }
+  return arr20
 }
-get20s(artists)
-console.log(arr20)
+
+console.log(get20s(artists))
 
 ///////////////////////////////// Task 4 (done)//////////////////////////////////////////////////////
 
@@ -280,11 +281,13 @@ console.log(arr20)
 */
 
 function removeArtist(arr, index) {
-     delete arr[index]
+  arr.splice(index, 1)
+  return arr.length
   }
   
-// console.log(removeArtist(artists, 6)) // removed Edouard Manet
-console.log(artists)
+console.log(removeArtist(artists, 6)) // removed Edouard Manet
+
+
 
 ///////////////////////////////// Task 5 (done)//////////////////////////////////////////////////////
 
@@ -313,14 +316,12 @@ let me = {
   bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper erat ac risus ullamcorper condimentum. Phasellus fermentum rutrum lobortis."
 }
 
-function addArtist({ id, name, years, genre, nationality, bio }) {
-
-  return artists.push({ id, name, years, genre, nationality, bio })
-
-
+function addArtist(obj) {
+  artists.push(obj)
+  return artists
 }
-addArtist(me)
-console.log(artists)
+
+console.log(addArtist(me))
 
 ///////////////////////////////// Task 6 (done)//////////////////////////////////////////////////////
 
@@ -333,8 +334,8 @@ console.log(artists)
 and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
-let arr100 = []
 function lotsOfArt(arr) {
+  let arr100 = []
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].paintings >= 100) {
       arr100.push(arr[i].name); 
