@@ -250,17 +250,21 @@ console.log(getArtistByIndex(artists, 9))
 /* Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - should return ["Salvador Dali", "Frida Kahlo"]*/
 
 let arr20 = []
-function get20s(arr, string){
-  for (let i = 0; i < arr.lenth; i++) {
-    if (arr[i].includes(string)) {
+
+function get20s(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let artist20 = arr[i].years.split(" - ");
+    arr[i].birth = artist20[0];
+    arr[i].death = artist20[1];
+    if (arr[i].birth >= 1900 && arr[i].death <= 2000) {
       arr20.push(arr[i])
     }
   }
 }
-get20s(artists, "1900-2000")
+get20s(artists)
 console.log(arr20)
 
-///////////////////////////////// Task 4 ()//////////////////////////////////////////////////////
+///////////////////////////////// Task 4 (done)//////////////////////////////////////////////////////
 
 ///////////////////////////////// Task 5 ////////////////////////////////////////////////////////////
 
@@ -279,7 +283,7 @@ function removeArtist(arr, index) {
      delete arr[index]
   }
   
-console.log(removeArtist(artists, 6)) // removed Edouard Manet
+// console.log(removeArtist(artists, 6)) // removed Edouard Manet
 console.log(artists)
 
 ///////////////////////////////// Task 5 (done)//////////////////////////////////////////////////////
@@ -300,14 +304,25 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 At the end, this function should return the new array with information added"*/
 
 
-function addArtist(id, name, years, genre, nationality, bio) {
-  return { id, name, years, genre, nationality, bio }
-
+let me = {
+  id: 20,
+  name: "Chase Miller",
+  years: "1993 - Present",
+  genre: "Web Design",
+  nationality: "American",
+  bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper erat ac risus ullamcorper condimentum. Phasellus fermentum rutrum lobortis."
 }
 
-console.log(addArtist(20, 'Chase Miller', "1993-2020", "Web Design", "American", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc semper erat ac risus ullamcorper condimentum. Phasellus fermentum rutrum lobortis."))
+function addArtist({ id, name, years, genre, nationality, bio }) {
 
-///////////////////////////////// Task 6 ()//////////////////////////////////////////////////////
+  return artists.push({ id, name, years, genre, nationality, bio })
+
+
+}
+addArtist(me)
+console.log(artists)
+
+///////////////////////////////// Task 6 (done)//////////////////////////////////////////////////////
 
 ///////////////////////////////// Task 7 ////////////////////////////////////////////////////////////
 
@@ -322,14 +337,15 @@ let arr100 = []
 function lotsOfArt(arr) {
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].paintings >= 100) {
-      arr100.push(arr[i]);
-    }
+      arr100.push(arr[i].name); 
+    } 
   }
+  return arr100
 }
-lotsOfArt(artists)
+
 console.log(lotsOfArt(artists))
 
-///////////////////////////////// Task 7 () /////////////////////////////////////////////////////
+///////////////////////////////// Task 7 (done) /////////////////////////////////////////////////////
 
 
 ///////////////////////////////// MVP () ////////////////////////////////////////////////////////////

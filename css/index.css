@@ -139,8 +139,9 @@ button:hover{
         flex-direction: column;
         width: 80%;
         justify-content: center;
+        margin: 0 auto;
     }
-    .artists {
-        max-width: 100%;
+    .artist {
+        margin: 0 auto;
     }
-}
+}   
